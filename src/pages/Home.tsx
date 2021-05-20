@@ -15,6 +15,13 @@ export const Home = () => {
 
   const handleAddTask = (newTaskTitle: string) => {
     //TODO - add new task if it's not empty
+    const task: Task = {
+      id: new Date().getTime(),
+      title: newTaskTitle,
+      done: false,
+    };
+
+    setTasks((oldTasks) => [...oldTasks, task]);
   };
 
   const handleMarkTaskAsDone = (id: number) => {
