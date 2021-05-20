@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
-export function Header() {
+export const Header = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

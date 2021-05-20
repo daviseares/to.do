@@ -3,11 +3,11 @@ import { Image, Platform, StyleSheet, TextInput, TouchableOpacity, View } from '
 
 import checkIcon from '../assets/icons/Check.png';
 
-interface TodoInputProps {
+type TodoInputProps =  {
   addTask: (task: string) => void;
 }
 
-export function TodoInput({ addTask }: TodoInputProps) {
+export const TodoInput = ({ addTask }: TodoInputProps) => {
   // const [task, setTask] = useState('');
 
   function handleAddNewTask() {
