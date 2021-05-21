@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Header } from "../components/Header";
-import { MyTasksList } from "../components/MyTasksList";
-import { TodoInput } from "../components/TodoInput";
+import { Header } from '../components/Header';
+import { MyTasksList } from '../components/MyTasksList';
+import { TodoInput } from '../components/TodoInput';
 
 type Task = {
   id: number;
@@ -25,11 +25,15 @@ export const Home = () => {
   };
 
   const handleMarkTaskAsDone = (id: number) => {
-    //TODO - mark task as done if exists
+    const newTasks = tasks.map((item) =>
+      item.id === id ? { ...item, done: !item.done } : item,
+    );
+    setTasks(newTasks);
   };
 
   const handleRemoveTask = (id: number) => {
-    //TODO - remove task from state
+    const newTasks = tasks.filter((item)=> item.id !== id);
+    setTasks(newTasks);
   };
 
   return (

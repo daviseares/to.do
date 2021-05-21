@@ -6,11 +6,13 @@ export const Header = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>to.</Text>
-        <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>do</Text>
+        <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>
+          do
+        </Text>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -21,11 +23,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#273FAD',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   headerText: {
     fontSize: 24,
     color: '#FFF',
     fontFamily: 'Poppins-Regular',
-  }
+  },
 });

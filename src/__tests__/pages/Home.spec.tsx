@@ -10,7 +10,7 @@ describe('Home', () => {
 
     fireEvent.changeText(inputElement, 'Primeira tarefa');
     fireEvent(inputElement, 'submitEditing');
-    
+
     fireEvent.changeText(inputElement, 'Segunda tarefa');
     fireEvent(inputElement, 'submitEditing');
 
@@ -37,7 +37,7 @@ describe('Home', () => {
 
     const buttonElement = getByTestId('button-0');
     const markerElement = getByTestId('marker-0');
-    
+
     const taskElement = getByText('Primeira tarefa');
 
     expect(buttonElement).toHaveStyle({
@@ -47,7 +47,7 @@ describe('Home', () => {
       marginBottom: 4,
       borderRadius: 4,
       flexDirection: 'row',
-      alignItems: 'center'
+      alignItems: 'center',
     });
     expect(markerElement).toHaveStyle({
       height: 16,
@@ -55,7 +55,7 @@ describe('Home', () => {
       borderRadius: 8,
       borderWidth: 1,
       borderColor: '#3D3D4D',
-      marginRight: 10
+      marginRight: 10,
     });
     expect(taskElement).toHaveStyle({
       color: '#3D3D4D',
@@ -64,14 +64,14 @@ describe('Home', () => {
     fireEvent.press(taskElement);
 
     expect(buttonElement).toHaveStyle({
-      backgroundColor: 'rgba(25, 61, 223, 0.1)'
+      backgroundColor: 'rgba(25, 61, 223, 0.1)',
     });
     expect(markerElement).toHaveStyle({
-      backgroundColor: '#273FAD'
+      backgroundColor: '#273FAD',
     });
     expect(taskElement).toHaveStyle({
       color: '#A09CB1',
-      textDecorationLine: 'line-through'
+      textDecorationLine: 'line-through',
     });
   });
 
@@ -81,7 +81,7 @@ describe('Home', () => {
 
     fireEvent.changeText(inputElement, 'Primeira tarefa');
     fireEvent(inputElement, 'submitEditing');
-    
+
     fireEvent.changeText(inputElement, 'Segunda tarefa');
     fireEvent(inputElement, 'submitEditing');
 
@@ -92,4 +92,4 @@ describe('Home', () => {
     expect(queryByText('Primeira tarefa')).toBeNull();
     getByText('Segunda tarefa');
   });
-})
+});

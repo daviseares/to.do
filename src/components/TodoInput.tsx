@@ -1,38 +1,58 @@
 import React, { useState } from 'react';
-import { Image, Platform, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { isEmpty } from 'lodash';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import checkIcon from '../assets/icons/Check.png';
 
-type TodoInputProps =  {
+type TodoInputProps = {
   addTask: (task: string) => void;
-}
+};
 
 export const TodoInput = ({ addTask }: TodoInputProps) => {
-  // const [task, setTask] = useState('');
+  const [task, setTask] = useState('');
 
-  function handleAddNewTask() {
-    //TODO - Call addTask and clean input value 
-  }
+  const handleAddNewTask = () => {
+    if (!isEmpty(task)) {
+      addTask(task);
+      setTask('');
+    }
+  };
 
   return (
-    <View style={[styles.inputContainer, Platform.OS === 'ios' ? styles.inputIOSShadow : styles.inputAndroidShadow]}>
-      <TextInput 
-        style={styles.input} 
+    <View
+      style={[
+        styles.inputContainer,
+        Platform.OS === 'ios'
+          ? styles.inputIOSShadow
+          : styles.inputAndroidShadow,
+      ]}
+    >
+      <TextInput
+        style={styles.input}
         placeholder="Adicionar novo todo..."
         returnKeyType="send"
-        //TODO - use value, onChangeText and onSubmitEditing props
+        onChangeText={setTask}
+        onSubmitEditing={handleAddNewTask}
+        value={task}
       />
       <TouchableOpacity
         testID="add-new-task-button"
         activeOpacity={0.7}
         style={styles.addButton}
-        //TODO - onPress prop
+        onPress={handleAddNewTask}
       >
         <Image source={checkIcon} />
       </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -52,16 +72,16 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 5,
   },
   inputIOSShadow: {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 3.84
+    shadowRadius: 3.84,
   },
   inputAndroidShadow: {
-    elevation: 5
+    elevation: 5,
   },
   addButton: {
     backgroundColor: '#3FAD27',
