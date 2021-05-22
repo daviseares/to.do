@@ -13,6 +13,7 @@
     "strict": true,
     "target": "esnext"
   },
+  "types": ["src/utils/types/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",

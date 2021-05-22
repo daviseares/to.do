@@ -1,8 +1,7 @@
+import { isEmpty } from 'lodash';
 import React, { useState } from 'react';
-
-import { Header } from '../components/Header';
-import { MyTasksList } from '../components/MyTasksList';
-import { TodoInput } from '../components/TodoInput';
+import { Header, MyTasksList, TodoInput } from '../../components';
+import { Wrapper } from './styles';
 
 type Task = {
   id: number;
@@ -10,11 +9,11 @@ type Task = {
   done: boolean;
 };
 
-export const Home = () => {
+const Home = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [title, setTitle] = useState('');
 
   const handleAddTask = (newTaskTitle: string) => {
-    //TODO - add new task if it's not empty
     const task: Task = {
       id: new Date().getTime(),
       title: newTaskTitle,
@@ -32,21 +31,31 @@ export const Home = () => {
   };
 
   const handleRemoveTask = (id: number) => {
-    const newTasks = tasks.filter((item)=> item.id !== id);
+    const newTasks = tasks.filter((item) => item.id !== id);
     setTasks(newTasks);
   };
 
+  const handleEditTitle = (title: string) => {
+    setTitle(title);
+  };
+
+
+
   return (
-    <>
+    <Wrapper>
       <Header />
 
       <TodoInput addTask={handleAddTask} />
 
       <MyTasksList
+        title={title}
         tasks={tasks}
+        onEditTitle={handleEditTitle}
         onPress={handleMarkTaskAsDone}
         onLongPress={handleRemoveTask}
       />
-    </>
+    </Wrapper>
   );
 };
+
+export default Home;
