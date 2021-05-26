@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 import { FlatList } from 'react-native';
 
-type Props = AppTheme & {
+type Props = {
   done?: boolean;
 };
 
@@ -21,7 +21,7 @@ export const List = styled(FlatList as new () => FlatList<Task>).attrs({
 export const TaskButton = styled.TouchableOpacity<Props>`
   padding-horizontal: 10px;
   padding-vertical: 12px;
-  margin-vertical:10px;
+  margin-vertical: 10px;
   margin-bottom: 4px;
   border-radius: 4px;
   flex-direction: row;
@@ -35,28 +35,28 @@ export const TaskMarker = styled.View<Props>`
   width: 18px;
   border-radius: 9px;
   margin-right: 10px;
-  ${(props) =>
-    !props.done
+  ${({ done }) =>
+    !done
       ? css`
           border-width: 1px;
-          border-color: ${(props) => props.theme.marker};
+          border-color: ${({ theme }) => theme.marker};
         `
       : css`
-          background-color: ${(props) => props.theme.marker};
+          background-color: ${({ theme }) => theme.marker};
         `}
 `;
 
 export const TaskText = styled.Text<Props>`
-  color: ${(props) => props.theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 16px;
   font-family: Poppins-SemiBold;
-  text-decoration-line: ${(props) => (props.done ? 'line-through' : 'none')};
+  text-decoration-line: ${({ done }) => (done ? 'line-through' : 'none')};
 `;
 
-export const HeaderText = styled.TextInput.attrs((props: Props) => ({
-  placeholderTextColor: props.theme.title,
-}))<Props>`
-  color: ${(props) => props.theme.title};
+export const HeaderText = styled.TextInput.attrs(({ theme }) => ({
+  placeholderTextColor: theme.title,
+}))`
+  color: ${({ theme }) => theme.title};
   font-size: 24px;
   font-family: Poppins-SemiBold;
 `;

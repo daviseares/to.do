@@ -1,6 +1,7 @@
-import { isEmpty } from 'lodash';
 import React, { useState } from 'react';
+import { observer } from 'mobx-react';
 import { Header, MyTasksList, TodoInput } from '../../components';
+import { useStores } from '../../hooks';
 import { Wrapper } from './styles';
 
 type Task = {
@@ -10,7 +11,7 @@ type Task = {
 };
 
 const Home = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { tasks } = useStores();
   const [title, setTitle] = useState('');
 
   const handleAddTask = (newTaskTitle: string) => {
@@ -20,26 +21,20 @@ const Home = () => {
       done: false,
     };
 
-    setTasks((oldTasks) => [...oldTasks, task]);
+    tasks.setTask(task);
   };
 
   const handleMarkTaskAsDone = (id: number) => {
-    const newTasks = tasks.map((item) =>
-      item.id === id ? { ...item, done: !item.done } : item,
-    );
-    setTasks(newTasks);
+    tasks.markAsDone(id);
   };
 
   const handleRemoveTask = (id: number) => {
-    const newTasks = tasks.filter((item) => item.id !== id);
-    setTasks(newTasks);
+    tasks.remove(id);
   };
 
   const handleEditTitle = (title: string) => {
     setTitle(title);
   };
-
-
 
   return (
     <Wrapper>
@@ -49,7 +44,7 @@ const Home = () => {
 
       <MyTasksList
         title={title}
-        tasks={tasks}
+        tasks={tasks.tasks}
         onEditTitle={handleEditTitle}
         onPress={handleMarkTaskAsDone}
         onLongPress={handleRemoveTask}
@@ -58,4 +53,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default observer(Home);
