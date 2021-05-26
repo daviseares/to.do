@@ -5,7 +5,7 @@ export const Wrapper = styled.View`
   background-color: ${({ theme }) => theme.input};
   border-radius: 5px;
   margin-top: -25px;
-  margin-horizontal: 40px;
+  margin: 0 40px;
   height: 50px;
   flex-direction: row;
   align-items: center;
@@ -34,7 +34,7 @@ export const Input = styled.TextInput.attrs(({ theme }) => ({
 export const AddButton = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.button};
   height: 50px;
-  padding-horizontal: 16px;
+  padding: 0 16px;
   justify-content: center;
   align-items: center;
   border-top-right-radius: 5px;

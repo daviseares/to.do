@@ -19,9 +19,8 @@ export const List = styled(FlatList as new () => FlatList<Task>).attrs({
 `;
 
 export const TaskButton = styled.TouchableOpacity<Props>`
-  padding-horizontal: 10px;
-  padding-vertical: 12px;
-  margin-vertical: 10px;
+  padding: 12px 10px;
+  margin: 10px 0;
   margin-bottom: 4px;
   border-radius: 4px;
   flex-direction: row;
