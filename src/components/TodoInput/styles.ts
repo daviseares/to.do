@@ -4,8 +4,7 @@ import { Platform } from 'react-native';
 export const Wrapper = styled.View`
   background-color: ${({ theme }) => theme.input};
   border-radius: 5px;
-  margin-top: -25px;
-  margin: 0 40px;
+  margin: -25px 40px 0 ;
   height: 50px;
   flex-direction: row;
   align-items: center;

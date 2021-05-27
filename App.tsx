@@ -8,7 +8,7 @@ import appearence from './src/utils/theme';
 
 export default function App() {
   const color = useColorScheme();
-  const { theme } = (color && appearence[color]) || appearence.dark;
+  const  theme  = (color && appearence[color]) || appearence.dark;
 
   return (
     <Provider rootStore={store}>
